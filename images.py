@@ -1,26 +1,26 @@
 from PIL import Image, ImageFilter, ImageDraw, ImageFont
 import os
 
-for g in os.listdir('.'):
-    if g.endswith('.jpg'):
-        img = Image.open(g)
-        fn, flext = os.path.splitext(g)
+for i in os.listdir('.'):
+    if i.endswith('.jpg'):
+        img = Image.open(i)
+        fn, flext = os.path.splitext(i)
 
-        rs = img.convert('L')
-        rs1 = rs.filter(ImageFilter.DETAIL)
-        rs2 = rs1.resize((1080, 1080))
-        width, height = rs2.size
+        r = img.convert('L')
+        r1 = r.filter(ImageFilter.DETAIL)
+        r2 = r1.resize((1080, 1080))
+        width, height = r2.size
 
-        draw = ImageDraw.Draw(rs2)
-        text = "#X_X_X!"
-        title = "WHITE"
+        point = ImageDraw.Draw(rs2)
+        txt = "#Zhalynbekov"
+        subject = "WHITE"
         font = ImageFont.truetype("arial.ttf", 80)
-        textwidth, textheight = draw.textsize(text, font)
+        textwidth, textheight = draw.textsize(txt, font)
 
         margin = 10
         x = width - textwidth - margin
         y = height - textheight - margin
 
-        draw.text((x, y), text, title, font=font)
+        point.text((x, y), txt, subject, font=font)
 
-        rs2.save('GG/{}{}'.format(fn, flext))
+        r2.save('GG/{}{}'.format(fn, flext))
